@@ -1,0 +1,44 @@
+[
+   {
+     "image":"https://p.rmjo.in/productSquare/6q17z1ay-500x500.jpg",
+     "name":"Pixar TV Unit",
+     "category":"TV Units",
+     "price":[289,199,150],
+     "deposit_fee":900,
+     "city":"Kolkata"
+   },
+   {
+     "image":"https://p.rmjo.in/productSquare/5pc0nm7w-500x500.jpg",
+     "name":"Java Center Table/ TV Unit",
+     "category":"TV Units",
+     "price":[139,99,59],
+     "deposit_fee":510,
+     "city":"Kolkata"
+   },
+   {
+     "image":"https://p.rmjo.in/productSquare/fgm22vkb-500x500.jpg",
+     "name":"Lack TV Bench",
+     "category":"TV Units",
+     "price":[99,70,59],
+     "deposit_fee":299,
+     "city":"Kolkata"
+   },
+   {
+     "image":"https://p.rmjo.in/productSquare/khai5gzi-500x500.jpg",
+     "name":"Marvel TV Unit",
+     "category":"TV Units",
+     "price":[179,99,59],
+     "deposit_fee":360,
+     "city":"Kolkata"
+   },
+   {
+     "image":"https://p.rmjo.in/productSquare/t0ebqxbs-500x500.jpg",
+     "name":"PS Cabinet by IKEA",
+     "category":"TV Units",
+     "price":[479,399,339],
+     "deposit_fee":1440,
+     "city":"Kolkata"
+   }
+]
+
+
