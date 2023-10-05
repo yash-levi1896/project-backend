@@ -1,32 +1,23 @@
 const express=require('express');
 const {CartModel}=require('../Models/cart.model');
-const jwt=require('jsonwebtoken')
 const cartRoute=express.Router();
 
 cartRoute.get("/",async (req,res)=>{
-    const token=req.headers.authorization.split(' ')[1];
-    //console.log("token",token)
-    if(token){
-        const decoded=jwt.verify(token,'masai');
-    
-   // console.log(decoded)
-    if(decoded.userID){
+
         try {
-            const user= await CartModel.find({userID:decoded.userID});
+            const user= await CartModel.find({userID:req.body.userID});
             res.status(200).send(user)
         } catch (error) {
             res.status(400).send({"msg":error.message})
         } 
-    }
-}else{
-    res.status(400).send({"msg":"Please login!"})
-}
+    
 })
    
 
 cartRoute.post("/add",async (req,res)=>{
-    const {name}=req.body;
-       let product=await CartModel.find({name});
+    const {name,userID,price}=req.body;
+    req.body.currprice=price[0]
+       let product=await CartModel.find({name,userID});
        if(product.length===0){
         try {
             const cart=await new CartModel(req.body);
@@ -45,7 +36,7 @@ cartRoute.post("/add",async (req,res)=>{
 cartRoute.delete("/delete/:cartID",async(req,res)=>{
     const {cartID}=req.params;
     try {
-        await CartModel.findByIdAndDelete({_id:cartID});
+        await CartModel.findOneAndDelete({_id:cartID,userID:req.body.userID});
         res.status(200).send({msg:"item got deleted"})
     } catch (error) {
         res.status(400).send({msg:error.message});
@@ -55,7 +46,7 @@ cartRoute.delete("/delete/:cartID",async(req,res)=>{
 cartRoute.patch("/update/:cartID",async(req,res)=>{
     const {cartID}=req.params;
     try {
-        await CartModel.findByIdAndUpdate({_id:cartID},req.body);
+        await CartModel.findOneAndUpdate({_id:cartID,userID:req.body.userID},req.body);
         res.status(200).send({msg:"item got updated"})
     } catch (error) {
         res.status(400).send({msg:error.message});

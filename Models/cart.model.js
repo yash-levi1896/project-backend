@@ -6,7 +6,8 @@ const cartSchema=mongoose.Schema({
     price:Array,
     deposit_fee:Number,
     quantity:Number,
-    userID:String
+    userID:String,
+    currprice:Number
 })
 
 const CartModel=mongoose.model("cart",cartSchema)

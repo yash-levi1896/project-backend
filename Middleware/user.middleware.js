@@ -1,6 +1,10 @@
 const jwt=require('jsonwebtoken')
 
  let authentication=(req,res,next)=>{
+    if(!req.headers.authorization){
+        res.status(400).send({msg:"Please login!"})
+    }
+    else{
     let token=req.headers.authorization.split(' ')[1];
     
     if(token){
@@ -17,7 +21,7 @@ const jwt=require('jsonwebtoken')
     }else{
         res.status(400).send({msg:"Please login !"});
     }
-    
+}
     
 }
 
